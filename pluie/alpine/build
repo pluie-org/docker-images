@@ -1,0 +1,17 @@
+#!/bin/bash
+# pluie/docker-images - a-Sansara (https://github.com/a-sansara)
+
+   Ctitle="\033[1;38;5;15;1;48;5;30m"
+    Citem="\033[1;38;5;36m"
+     Coff="\033[m"
+DOCKBUILD=$(dirname "${BASH_SOURCE[0]}")
+ DOCKREPO=$(dirname "${DOCKBUILD}")
+  DOCKTAG=${1:-"latest"}
+   indent="    "
+echo -e "\n  ${Ctitle} Preparing files : ${Coff}${Citem}\n"
+
+tar -cvf files.tar *.sh pre-init.d/ install.d/ | sed  's/^/${indent}* /'
+
+echo -e "\n  ${Ctitle} Proceed Dockerfile build : ${Coff}\n
+"
+docker build --force-rm -t ${DOCKREPO}/${DOCKBUILD}:${DOCKTAG} . | sed  's/^/${indent}/'
