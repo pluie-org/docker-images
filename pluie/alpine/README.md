@@ -1,7 +1,13 @@
 # pluie/alpine
 
-This Image provide a Linux Alpine distribution with fully functionnal & colorized terminal, bash, curl & nano as editor
-Base image [gliderlabs/alpine:3.2] (https://registry.hub.docker.com/u/gliderlabs/alpine/)
+This Image provide a Linux Alpine distribution with :
+- fully functionnal & colorized terminal
+- bash
+- curl
+- nano as editor
+
+Base image : [gliderlabs/alpine:3.2] (https://registry.hub.docker.com/u/gliderlabs/alpine/)
+
 This project come with a structure to facilitate further images (like pluie/alpine-apache & pluie/alpine-mysql)
 
 ## Docker image size
@@ -37,25 +43,41 @@ project/
    |-- util.sh      # sourced by common.sh
 ```
 
-you can easily create your own images based on this structure.
-keep an eye to pluie/alpine-apache & pluie/alpine-mysql wich extend pluie/alpine
+you can easily create your own images based on this structure.  
+keep an eye to pluie/alpine-apache & pluie/alpine-mysql wich extend pluie/alpine  
 
 
 ## Extend pluie/alpine Image
 
-RUN instructions are minimized
+RUN instructions are minimized  
 on extended image you can only use :
 ```
 RUN bash /scripts/install.sh
 ```
-add your packages in a script in install.d directory
-keep name below 40 because install.d/40-fix.sh clean package repository
+add your packages in a script in install.d directory  
+keep name below 40 because install.d/40-fix.sh clean package repository  
 each extended image inherit install.d && pre-init.d scripts
 
-UNIQ ENTRYPOINT - extended images doesn't need to define ENTRYPOINT
-you can keep intact build script in each extended project
-manage your install & init instruction in install.d & pre-init.d directory
-and write your own main.sh script
+extended images doesn't need to define ENTRYPOINT  
+you can keep intact build script in each extended project  
+manage your install & init instruction in install.d & pre-init.d directory  
+and write your own main.sh script  
+
+Docker file example (from pluie/alpine-apache)
+
+```
+FROM pluie/alpine
+
+MAINTAINER a-Sansara https://github.com/a-sansara
+
+ADD files.tar /scripts
+
+RUN bash /scripts/install.sh
+
+EXPOSE 80
+
+VOLUME /app
+```
 
 
 
