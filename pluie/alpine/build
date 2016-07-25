@@ -4,14 +4,18 @@
    Ctitle="\033[1;38;5;15;1;48;5;30m"
     Citem="\033[1;38;5;36m"
      Coff="\033[m"
-DOCKBUILD=$(dirname "${BASH_SOURCE[0]}")
- DOCKREPO=$(dirname "${DOCKBUILD}")
+  DOCKDIR=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
+DOCKBUILD=$(basename $DOCKDIR)
+ DOCKREPO=$(basename $(dirname $(readlink -f ${DOCKBUILD})))
   DOCKTAG=${1:-"latest"}
+   TMPPWD=$(pwd)
    indent="    "
+cd $DOCKDIR
 echo -e "\n  ${Ctitle} Preparing files : ${Coff}${Citem}\n"
 
-tar -cvf files.tar *.sh pre-init.d/ install.d/ | sed  's/^/${indent}* /'
+tar -cvf files.tar *.sh pre-init.d/ install.d/ | sed "s/^/${indent}* /"
 
 echo -e "\n  ${Ctitle} Proceed Dockerfile build : ${Coff}\n
 "
-docker build --force-rm -t ${DOCKREPO}/${DOCKBUILD}:${DOCKTAG} . | sed  's/^/${indent}/'
+docker build --force-rm -t ${DOCKREPO}/${DOCKBUILD}:${DOCKTAG} . | sed "s/^/${indent}/"
+cd $TMPPWD
