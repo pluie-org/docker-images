@@ -6,7 +6,7 @@
      Coff="\033[m"
   DOCKDIR=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 DOCKBUILD=$(basename $DOCKDIR)
- DOCKREPO=$(basename $(dirname $(readlink -f ${DOCKBUILD})))
+ DOCKREPO=$(basename $(dirname $DOCKDIR))
   DOCKTAG=${1:-"latest"}
    TMPPWD=$(pwd)
    indent="    "

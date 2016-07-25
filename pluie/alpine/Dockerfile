@@ -6,6 +6,6 @@ ADD files.tar /scripts
 
 RUN apk --update add bash && bash /scripts/install.sh
 
-ENV TERM=xterm HTTP_SERVER_NAME=docker-site.dev FIX_OWNERSHIP=1
+ENV TERM=xterm SHENV_CTX=LOCAL SHENV_NAME=Alpine SHENV_COLOR=97
 
 ENTRYPOINT ["/scripts/main.sh"]
