@@ -1,6 +1,6 @@
 # pluie/alpine-apache
 
-extend pluie/alpine with apache 2.4.16
+Extend pluie/alpine with apache 2.4.16
 
 - error log are attached to stdout
 - no need port redirection
