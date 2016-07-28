@@ -51,14 +51,14 @@ locally (on host) you can run (with appropriate user : pass) :
 ```
 mysql -h ipmysqlcontainer -udev -pmysql
 ```
-or if you want use mysql client of the container :
+or if you want use the mysql client of the container :
 ```
 docker exec -it mysql "mysql -h ipmysqlcontainer -udev -pmysql"
 ```
 
 ## Link container
 
-to link this container to another, use the default docker behaviore :
+to link this container to another, use the default docker behavior :
 ```
 docker run --name mycontainer --link mysql:db ...
 ```
