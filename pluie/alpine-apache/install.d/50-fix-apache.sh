@@ -8,3 +8,4 @@ sed -i 's#^DocumentRoot ".*#DocumentRoot "/app/www"#g' /etc/apache2/httpd.conf
 sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf
 sed -ir 's/expose_php = On/expose_php = Off/' /etc/php/php.ini
 echo -e "\nIncludeOptional /app/vhost" >> /etc/apache2/httpd.conf
+rm -f /scripts/pre-init.d/50-example.sh

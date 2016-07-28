@@ -7,7 +7,7 @@ This Image extend pluie/alpine with mysql (mariadb) 5.5.47
 
 - image ~ 160 MB
 
-## Docker image voumes
+## Docker image volumes
 
 __/var/lib/mysql__ : mysql database directory  
 __/dump__         : directory to store various mysql scripts  
