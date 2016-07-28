@@ -15,7 +15,7 @@ This project come with a structure to facilitate further images (like pluie/alpi
 - very small image < 10 MB
 
 
-## Dmage Usage
+## Image Usage
 
 ```
 $ docker run --name alpine pluie/alpine
