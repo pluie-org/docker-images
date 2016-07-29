@@ -18,7 +18,7 @@ This project come with a structure to facilitate further images (like pluie/alpi
 ## Image Usage
 
 ```
-$ docker run --name alpine pluie/alpine
+$ docker run --name alpine -it pluie/alpine
 ```
 
 ## Image Structure
