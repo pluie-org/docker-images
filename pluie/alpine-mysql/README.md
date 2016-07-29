@@ -23,7 +23,7 @@ __MYSQL_ROOT_PASSWORD__ : don't really need it. a random root password is genera
 ## Image Usage
 
 ```
-$ docker run --name mysql -p 3306 -v /home/docker/db/mysql:/var/lib/mysql -v /home/docker/db/dump:/dump -e MYSQL_DATABASE=mybase -e MYSQL_USER=dev -e MYSQL_PASSWORD=mysql -it pluie/alpine-mysqldocker
+$ docker run --name mysql -p 3306 -v /home/docker/db/mysql:/var/lib/mysql -v /home/docker/db/dump:/dump -e MYSQL_DATABASE=mybase -e MYSQL_USER=dev -e MYSQL_PASSWORD=mysql -it pluie/alpine-mysql
 ```
 
 ### Root Usage
