@@ -5,8 +5,8 @@ based images for Docker
 ## Available Images
 
 - __pluie/alpine__        ( < 10 MB)  Alpine/3.4
-- __pluie/alpine-apache__ ( ~ 37 MB)  Apache/2.4.23 Php/5.6.24
-- __pluie/alpine-mysql__  ( ~ 160 MB) Mysql/5.5.47 [MariaDB]
+- __pluie/alpine-apache__ ( ~ 50 MB)  Apache/2.4.23 Php/5.6.24
+- __pluie/alpine-mysql__  ( ~ 172 MB) Mysql/5.5.47 [MariaDB]
 
 ## Base Image Structure
 

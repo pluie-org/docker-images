@@ -5,7 +5,7 @@ Extend pluie/alpine with mysql (mariadb) 5.5.47
 
 ## Image Size
 
-- image ~ 160 MB
+- image ~ 172 MB
 
 ## Image Volumes
 
