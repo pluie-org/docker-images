@@ -7,7 +7,7 @@ if [ ! -z "/app/vhost" ]; then
     ServerName $HTTP_SERVER_NAME
     <Directory /app/www>
         AllowOverride None
-        Allow from all
+        Require all granted
         DirectoryIndex index.php
         <IfModule mod_rewrite.c>
             Options -MultiViews +FollowSymlinks

@@ -10,4 +10,3 @@ cat <<EOF > /etc/inputrc
 "\e[5~": history-search-backward    # page-up
 "\e[6~": history-search-forward     # page-down
 EOF
-bind -f /etc/inputrc

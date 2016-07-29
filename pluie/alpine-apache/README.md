@@ -10,7 +10,7 @@ Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__
 
 ## Image Size
 
-- image ~ 37 MB
+- image ~ 50 MB
 
 
 ## Image Volumes
@@ -37,11 +37,11 @@ by default it use the apache rewrite module to redirect all uri to the unique en
 
 chdir to your project directory
 ```
-$ docker run --name apache -it --link=db1:mysql -v $(pwd):/app pluie/apache
+$ docker run --name apache -it --link=mysql:db1 -v $(pwd):/app pluie/alpine-apache
 ```
 or
 ```
-$ docker run --name srv -it --link=db1:mysql -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/apache
+$ docker run --name apache -it --link=mysql:db1 -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-apache
 ```
 
 
