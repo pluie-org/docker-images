@@ -6,7 +6,10 @@ ADD files.tar /scripts
 
 RUN bash /scripts/install.sh
 
-ENV SHENV_NAME=Apache SHENV_COLOR=67 HTTP_SERVER_NAME=docker-site.dev FIX_OWNERSHIP=1
+ENV      SHENV_NAME=Apache \
+        SHENV_COLOR=67 \
+   HTTP_SERVER_NAME=docker-site.dev \
+      FIX_OWNERSHIP=1
 
 EXPOSE 80
 

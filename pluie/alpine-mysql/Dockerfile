@@ -6,7 +6,8 @@ ADD files.tar /scripts
 
 RUN bash /scripts/install.sh
 
-ENV SHENV_NAME=Mysql SHENV_COLOR=132
+ENV  SHENV_NAME=Mysql \
+    SHENV_COLOR=132
 
 EXPOSE 3306
 

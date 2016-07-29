@@ -1,15 +1,26 @@
 #!/bin/bash
 # pluie/docker-images - a-Sansara (https://github.com/a-sansara)
 
+function mysql.secure(){
+    chown mysql:mysql $1
+    sleep 5
+    echo "[[ SECURING DATABASE ]]";
+    echo "please wait."
+    sleep 5
+    rm -f $1
+    echo "done"
+}
+
 if [ ! -d "/run/mysqld" ]; then
     mkdir -p /run/mysqld
     chown -R mysql:mysql /run/mysqld
 fi
 
 if [ ! -d /var/lib/mysql/mysql ]; then
+
     echo "[[ Initialize DB ]]"
     chown -R mysql:mysql /var/lib/mysql
-    mysql_install_db --user=mysql > /dev/null
+    mysql_install_db --user=mysql --verbose=1 --basedir=/usr --datadir=/var/lib/mysql --rpm > /dev/null
 
     if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
         MYSQL_ROOT_PASSWORD=`pwgen -y -s 18 1`
@@ -24,20 +35,19 @@ if [ ! -d /var/lib/mysql/mysql ]; then
         return 1
     fi
 
-    cat << EOF > $tfile
-USE mysql;
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
-UPDATE user SET password=PASSWORD("$MYSQL_ROOT_PASSWORD") WHERE user='root';
+    cat <<-EOF > $tfile
+UPDATE mysql.user SET password=PASSWORD('$MYSQL_ROOT_PASSWORD') WHERE user='root';
+DELETE FROM mysql.user WHERE user='root' AND host NOT IN ('localhost', '127.0.0.1', '::1', '$(hostname)');
+DELETE FROM mysql.user WHERE user='';
+DELETE FROM mysql.db WHERE db='test' OR db='test\_%';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
-UPDATE user SET password=PASSWORD("") WHERE user='root' AND host='localhost';
+UPDATE mysql.user SET password=PASSWORD("") WHERE user='root' AND host='localhost';
 EOF
 
     if [ ! -z "$MYSQL_DATABASE" ]; then
-        echo "[[ CREATE DATABASE $MYSQL_DATABASE ]]";
         echo "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\` CHARACTER SET utf8 COLLATE utf8_general_ci;" >> $tfile
     fi
     if [ "$MYSQL_USER" != "" ] && [ "$MYSQL_USER" != 'root' ]; then
-        echo "[[ CREATE USER $MYSQL_USER ]]";
         echo "
 CREATE USER '$MYSQL_USER'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
 CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> $tfile
@@ -47,6 +57,14 @@ GRANT ALL ON \`$MYSQL_DATABASE\`.* to '$MYSQL_USER'@'localhost' IDENTIFIED BY '$
 GRANT ALL ON \`$MYSQL_DATABASE\`.* to '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> $tfile
         fi
     fi
-    /usr/bin/mysqld --user=mysql --bootstrap --skip-grant-tables=0 --verbose=0 < $tfile
-    rm -f $tfile
+    echo "FLUSH PRIVILEGES;" >> $tfile
+
+    mysql.secure $tfile &
+
+    echo "[[ Starting Mysql Daemon ]]"
+    exec /usr/bin/mysqld --user=mysql --console --init-file="$tfile"
+
+else
+    echo "[[ Skipping DB init ]]"
+    echo "[[ Starting Mysql Daemon ]]"
 fi
