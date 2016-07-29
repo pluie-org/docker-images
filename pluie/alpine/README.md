@@ -10,18 +10,18 @@ Base image : [gliderlabs/alpine:3.2] (https://registry.hub.docker.com/u/gliderla
 
 This project come with a structure to facilitate further images (like pluie/alpine-apache & pluie/alpine-mysql)
 
-## Docker image size
+## Image Size
 
 - very small image < 10 MB
 
 
-## Docker image usage
+## Image Usage
 
 ```
 $ docker run --name alpine pluie/alpine
 ```
 
-## Docker image structure
+## Image Structure
 
 ```
 project/

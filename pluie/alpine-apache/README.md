@@ -1,6 +1,6 @@
 # pluie/alpine-apache
 
-This Image extend pluie/alpine with apache2 2.4.16
+Extend pluie/alpine with apache 2.4.16
 
 - error log are attached to stdout
 - no need port redirection
@@ -8,12 +8,12 @@ This Image extend pluie/alpine with apache2 2.4.16
 - you can still use ever your local http & sql server while your container(s) are running
 
 
-## Docker image size
+## Image Size
 
 - image ~ 37 MB
 
 
-## Docker image volumes
+## Image Volumes
 
 __/app__ directory is a docker volume bind to your app project (silex/symfony etc)  
 
@@ -33,7 +33,7 @@ by default it use the apache rewrite module to redirect all uri to the unique en
 ```
 
 
-## Docker image usage
+## Image Usage
 
 chdir to your project directory
 ```
