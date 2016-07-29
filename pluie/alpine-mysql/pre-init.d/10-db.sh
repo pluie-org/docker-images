@@ -11,7 +11,7 @@ if [ ! -d /var/lib/mysql/mysql ]; then
     chown -R mysql:mysql /var/lib/mysql
     mysql_install_db --user=mysql > /dev/null
 
-    if [ ! -z "$MYSQL_ROOT_PASSWORD" ]; then
+    if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
         MYSQL_ROOT_PASSWORD=`pwgen -y -s 18 1`
     fi
 
