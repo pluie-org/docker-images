@@ -2,14 +2,14 @@
 # pluie/docker-images - a-Sansara (https://github.com/a-sansara)
 
 function bash_prompt() {
-     local Cenv="243"
+     local Cenvcode="243"
     if [ "$SHENV_CTX" = "INT" ]; then
-     local Cenv="202"
+     local Cenvcode="202"
     elif [ "$SHENV_CTX" = "PROD" ]; then
-     local Cenv="160"
+     local Cenvcode="160"
     fi
     local Cdate="\[\033[1;33m\]"
-     local Cctx="\[\033[1;48;5;243m\]"
+     local Cctx="\[\033[1;48;5;${Cenvcode}m\]"
     local Cname="\[\033[1;48;5;${SHENV_COLOR}m\]"
     local Cpath="\[\033[1;38;5;36m\]"
    local Cwhite="\[\033[1;38;5;15m\]"
