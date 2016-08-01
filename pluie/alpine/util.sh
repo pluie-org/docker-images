@@ -8,17 +8,17 @@ function bash_prompt() {
     elif [ "$SHENV_CTX" = "PROD" ]; then
      local Cenv="160"
     fi
-    local Cdate="\033[1;33m"
-     local Cctx="\033[1;48;5;243m"
-    local Cname="\033[1;48;5;${SHENV_COLOR}m"
-    local Cpath="\033[1;38;5;36m"
-   local Cwhite="\033[1;38;5;15m"
-    local Chost="\033[1;38;5;15m"
-  local Csymbol="\033[1;38;5;15m"
-    local Cuser="\033[1;38;5;203m"
-     local Coff="\033[m"
+    local Cdate="\[\033[1;33m\]"
+     local Cctx="\[\033[1;48;5;243m\]"
+    local Cname="\[\033[1;48;5;${SHENV_COLOR}m\]"
+    local Cpath="\[\033[1;38;5;36m\]"
+   local Cwhite="\[\033[1;38;5;15m\]"
+    local Chost="\[\033[1;38;5;15m\]"
+  local Csymbol="\[\033[1;38;5;15m\]"
+    local Cuser="\[\033[1;38;5;203m\]"
+     local Coff="\[\033[m\]"
 
-    export PS1="\[${Cdate}\]\t \[${Cwhite}${Cctx}\] DOCKER ${SHENV_CTX} \[${Cname}\] ${SHENV_NAME} \[${Coff} ${Cuser}\]\u\[${Chost}\]@\h \[${Cpath}\]\w \[${Csymbol}\]\$ \[${Coff}\]"
+    export PS1="${Cdate}\t ${Cwhite}${Cctx} DOCKER ${SHENV_CTX} ${Cname} ${SHENV_NAME} ${Coff} ${Cuser}\u${Chost}@\h ${Cpath}\w ${Csymbol}\$ ${Coff}"
 }
 
 function preInit(){
