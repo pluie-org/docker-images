@@ -21,11 +21,19 @@ function bash_prompt() {
     export PS1="${Cdate}\t ${Cwhite}${Cctx} DOCKER ${SHENV_CTX} ${Cname} ${SHENV_NAME} ${Coff} ${Cuser}\u${Chost}@\h ${Cpath}\w ${Csymbol}\$ ${Coff}"
 }
 
+function initTitle(){
+    local data=${1:-''}
+    if [ ! -z "$2" ]; then
+        data="$data\033[1;38;5;97m $2 "
+    fi
+    echo -e "\n\033[1;33m[[ \033[1;38;5;30m$data\033[1;33m]]\033[m"
+}
+
 function preInit(){
     for i in ls $1/*.sh
     do
         if [ -e "${i}" ]; then
-            echo "[[ Processing $i ]]"
+            initTitle "Processing" "$i"
             . "${i}"
         fi
     done

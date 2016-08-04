@@ -13,7 +13,7 @@ DOCKBUILD=$(basename $DOCKDIR)
 cd $DOCKDIR
 echo -e "\n  ${Ctitle} Preparing files : ${Coff}${Citem}\n"
 
-tar -cvf files.tar *.sh pre-init.d/ install.d/ | sed "s/^/${indent}* /"
+tar -cvf files.tar *.sh pre-init.d/ install.d/ | sed "s/^/${indent}↠ /"
 
 echo -e "\n  ${Ctitle} Proceed Dockerfile build : ${Coff}\n
 "

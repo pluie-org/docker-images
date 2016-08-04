@@ -1,10 +1,12 @@
 #!/bin/bash
 # pluie/docker-images - a-Sansara (https://github.com/a-sansara)
 
+. /scripts/util.sh
+
 function mysql.secure(){
     chown mysql:mysql $1
     sleep 5
-    echo "[[ SECURING DATABASE ]]";
+    initTitle "SECURING" "DATABASE"
     echo "please wait."
     sleep 5
     rm -f $1
@@ -18,7 +20,7 @@ fi
 
 if [ ! -d /var/lib/mysql/mysql ]; then
 
-    echo "[[ Initialize DB ]]"
+    initTitle "Initialize" "DATABASE"
     chown -R mysql:mysql /var/lib/mysql
     mysql_install_db --user=mysql --verbose=1 --basedir=/usr --datadir=/var/lib/mysql --rpm > /dev/null
 
@@ -61,10 +63,10 @@ GRANT ALL ON \`$MYSQL_DATABASE\`.* to '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PA
 
     mysql.secure $tfile &
 
-    echo "[[ Starting Mysql Daemon ]]"
+    initTitle "Starting" "Mysql Daemon"
     exec /usr/bin/mysqld --user=mysql --console --init-file="$tfile"
 
 else
-    echo "[[ Skipping DB init ]]"
-    echo "[[ Starting Mysql Daemon ]]"
+    initTitle "Skipping" "DB init"
+    initTitle "Starting" "Mysql Daemon"
 fi

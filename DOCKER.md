@@ -45,7 +45,7 @@ rm -f to force stop running container before removing
 
 #### remove none images
 ```
-docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+docker rmi $(docker images | grep "^<none>" | awk "{print \$3}")
 ```
 
 #### remove all volumes

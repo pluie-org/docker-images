@@ -3,5 +3,5 @@
 
 . /scripts/common.sh
 
-echo "[[ Starting Apache Daemon ]]"
+initTitle "Starting" "Apache Daemon"
 httpd -D FOREGROUND
