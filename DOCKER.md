@@ -121,7 +121,7 @@ cd /home/dev/docker
 
 docker run --name wordpress --restart=always \
 --net home0 -h wordpress.docker --ip 172.22.0.6 --link mysql:db \
--v $(pwd)/blog:/app \
+-v $(pwd)/repo/blog:/app \
 -e HTTP_SERVER_NAME=wordpress.docker \
 -d pluie/alpine-apache
 ```
