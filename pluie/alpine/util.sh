@@ -18,8 +18,7 @@ function bash_prompt() {
   local Csymbol="\[\033[1;38;5;15m\]"
     local Cuser="\[\033[1;38;5;203m\]"
      local Coff="\[\033[m\]"
-
-    export PS1="${Cdate}\t ${Cwhite}${Cctx} DOCKER ${SHENV_CTX} ${Cname} ${SHENV_NAME} ${Coff} ${Cuser}\u${Chost}@\h ${Cpath}\w ${Csymbol}\$ ${Coff}"
+     export PS1="${Cdate}\t ${Cwhite}${Cctx} DOCKER ${SHENV_CTX} ${Cname} ${SHENV_NAME} ${Coff} ${Cuser}\u${Chost}@\h ${Cpath}\w ${Csymbol}\$ ${Coff}"
 }
 
 function initTitle(){

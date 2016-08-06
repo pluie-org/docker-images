@@ -1,0 +1,10 @@
+#!/bin/bash
+# @app      docker-images
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TAG=${1:-''}
+for project in `ls -d */`; do
+    cd "$DIR/$project"
+    ./build "$tag"
+done
