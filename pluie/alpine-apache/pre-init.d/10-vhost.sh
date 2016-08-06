@@ -1,5 +1,6 @@
 #!/usr/bin/bash
-# pluie/docker-images - a-Sansara (https://github.com/a-sansara)
+# @app      pluie/alpine-apache
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
 if [ ! -z "/app/vhost" ]; then
     cat <<EOF > "/app/vhost"

@@ -1,3 +1,7 @@
+#!/bin/bash
+# @app      pluie/alpine
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
+#
 # Keyboard shortcut : Ctrl+x followed by desired key 
 # refresh without bash logout : bind -f ~/.inputrc
 

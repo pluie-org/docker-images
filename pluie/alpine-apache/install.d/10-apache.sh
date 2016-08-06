@@ -1,5 +1,6 @@
 #!/bin/bash
-# pluie/docker-images - a-Sansara (https://github.com/a-sansara)
+# @app      pluie/alpine-apache
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
 apk --update add apache2 \
 php5-apache2 php5-cli php5-phar php5-zlib php5-zip php5-ctype php5-mysqli php5-xml php5-pdo_mysql  \

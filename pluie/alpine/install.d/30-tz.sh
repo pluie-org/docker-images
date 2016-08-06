@@ -1,5 +1,6 @@
 #!/bin/bash
-# pluie/docker-images - a-Sansara (https://github.com/a-sansara)
+# @app      pluie/alpine
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
 if [ ! -z "$TZ" ] && [ -f "/usr/share/zoneinfo/$TZ" ]; then
     echo "$TZ" > /etc/TZ

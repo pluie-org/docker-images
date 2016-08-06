@@ -1,5 +1,6 @@
 #!/bin/bash
-# pluie/docker-images - a-Sansara (https://github.com/a-sansara)
+# @app      pluie/alpine-mysql
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
 Ctitle="\033[1;48;5;30;1;38;5;15m"
  Ctext="\033[1;38;5;30m"

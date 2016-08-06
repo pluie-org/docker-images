@@ -1,5 +1,6 @@
 #!/bin/bash
-# pluie/docker-images - a-Sansara (https://github.com/a-sansara)
+# @app      pluie/alpine-apache
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
 mkdir -p /app/www 
 chown -R 1000:apache /app/www
