@@ -1,9 +1,10 @@
 # pluie/alpine-mysql
 
 - [index][1]
-- [image pluie/alpine][2]
-- [image pluie/alpine-apache][4]
-- [image pluie/alpine-symfony][6]
+- [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
+    - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
+        - [pluie/alpine-symfony][6]       ( ~ 81 MB )
+    - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
 - [docker tips][5]
 
 Extend pluie/alpine with mysql (mariadb) 5.5.47  

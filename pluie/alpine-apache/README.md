@@ -1,9 +1,10 @@
 # pluie/alpine-apache
 
 - [index][1]
-- [image pluie/alpine][2]
-- [image pluie/alpine-mysql][3]
-- [image pluie/alpine-symfony][6]
+- [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
+    - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
+        - [pluie/alpine-symfony][6]       ( ~ 81 MB )
+    - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
 - [docker tips][5]
 
 Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__
@@ -48,11 +49,11 @@ __/app/vhost__ is your app vhost configuration file (with a serverName directive
 by default it use the apache rewrite module to redirect all uri to entry point $WWW_INDEX 
 
 ```
-/app/            # your application directory
+/app/              # your application directory
   |
-  |---- www/     # documentRoot
+  |---- $WWW_DIR/  # documentRoot
   |
-  |---- vhost    # apache app vhost
+  |---- vhost     # apache app vhost
 ```
 
 
