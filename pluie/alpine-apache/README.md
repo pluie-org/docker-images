@@ -3,6 +3,7 @@
 - [index][1]
 - [image pluie/alpine][2]
 - [image pluie/alpine-mysql][3]
+- [image pluie/alpine-symfony][6]
 - [docker tips][5]
 
 Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__
@@ -17,17 +18,34 @@ Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__
 
 - image ~ 50 MB
 
+## ENV variables
+
+```
+ HTTP_SERVER_NAME=apache.docker # apache ServerName  
+          WWW_DIR=www           # DocumentRoot relative to volume  
+        WWW_INDEX=index.php     # DirectoryIndex
+    FIX_OWNERSHIP=1             # 
+```
+
+### Inherit ENV variables
+
+```
+        SHENV_CTX=LOCAL         # LOCAL|INT|PROD change context bg color
+       SHENV_NAME=Apache        # container name 
+      SHENV_COLOR=67            # ANSI EXTENDED COLOR CODE
+               TZ=Europe/Paris  # TIMEZONE
+```
 
 ## Image Volumes
 
 __/app__ directory is a docker volume bind to your app project (silex/symfony etc)  
 
-__/app/www/__ is the documentRoot.  
+__/app/$WWW_DIR__ is the documentRoot.  
 put only your entry point and static files to the documentRoot directory, no your app sources
 (__/app__ directory is design for this).
 
 __/app/vhost__ is your app vhost configuration file (with a serverName directive).
-by default it use the apache rewrite module to redirect all uri to the unique entry point index.php 
+by default it use the apache rewrite module to redirect all uri to entry point $WWW_INDEX 
 
 ```
 /app/            # your application directory
@@ -65,3 +83,4 @@ $ docker exec -it apache "httpd -h"
  [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
  [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
+ [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony

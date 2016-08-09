@@ -4,9 +4,11 @@ various based images for Docker
 
 ## Available Images
 
-- [pluie/alpine][2]        ( < 10 MB ) Alpine/3.4
-- [pluie/alpine-apache][3] ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
-- [pluie/alpine-mysql][4]  ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
+- [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
+    - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
+        - [image pluie/alpine-symfony][6] ( ~ 81 MB )
+    - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
+        
 - [docker tips][5]
 
 ## Base Image Structure
@@ -22,7 +24,7 @@ project/
    |
    |-- pre-init.d/  # deployed in /scripts on target container
    |      |         # launch on docker container running process
-   |      |-- 50-example.sh
+   |      |-- 50-builder.sh
    |
    |-- build        # build docker image : ./build [TAG]
    |-- common.sh    # don't modify - sourced by main.sh to execute pre-init.d scripts first
@@ -74,3 +76,4 @@ you can keep same __build__ script in any project
  [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
  [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
+ [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony

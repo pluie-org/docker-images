@@ -3,6 +3,7 @@
 - [index][1]
 - [image pluie/alpine-mysql][3]
 - [image pluie/alpine-apache][4]
+- [image pluie/alpine-symfony][6]
 - [docker tips][5]
 
 This Image provide a Linux Alpine distribution with :
@@ -14,6 +15,11 @@ This Image provide a Linux Alpine distribution with :
 Base image : [alpine:3.4] (https://hub.docker.com/_/alpine/)
 
 This project come with a structure to facilitate further images (like pluie/alpine-apache & pluie/alpine-mysql)
+
+__note :__ wget ssl issue
+
+apk add ca-certificates wget && update-ca-certificates
+    
 
 ## Image Size
 
@@ -39,7 +45,7 @@ project/
    |
    |-- pre-init.d/  # deployed in /scripts on target container
    |      |         # launch on docker container running process
-   |      |-- 50-example.sh
+   |      |-- 50-builder.sh
    |
    |-- build        # build docker image : ./build [TAG]
    |-- common.sh    # don't modify - sourced by main.sh to execute pre-init.d scripts first
@@ -89,3 +95,4 @@ VOLUME /app
  [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
  [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
+ [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony

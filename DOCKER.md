@@ -115,6 +115,17 @@ docker run --name apache --restart=always \
 -d pluie/alpine-apache
 ```
 
+### Symfony
+```
+cd /home/dev/docker
+docker run --name symfony --restart=always \
+--net home0 -h symfony.docker --ip 172.22.0.7 --link=mysql:db \
+-e HTTP_SERVER_NAME=symfony \
+-e SYMFONY_VERSION=2.8 \
+-v $(pwd)/repo/myapp:/app \
+-d pluie/alpine-symfony
+```
+
 #### Wordpress
 ```
 cd /home/dev/docker

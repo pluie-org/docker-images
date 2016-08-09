@@ -3,6 +3,7 @@
 - [index][1]
 - [image pluie/alpine][2]
 - [image pluie/alpine-apache][4]
+- [image pluie/alpine-symfony][6]
 - [docker tips][5]
 
 Extend pluie/alpine with mysql (mariadb) 5.5.47  
@@ -129,3 +130,4 @@ docker run --name mycontainer --link mysql:db ...
  [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
  [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
+ [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony

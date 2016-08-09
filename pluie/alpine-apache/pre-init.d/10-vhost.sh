@@ -6,15 +6,15 @@ if [ ! -z "/app/vhost" ]; then
     cat <<EOF > "/app/vhost"
 <VirtualHost *:80>
     ServerName $HTTP_SERVER_NAME
-    <Directory /app/www>
+    <Directory /app/$WWW_DIR>
         AllowOverride None
         Require all granted
-        DirectoryIndex index.php
+        DirectoryIndex $WWW_INDEX
         <IfModule mod_rewrite.c>
             Options -MultiViews +FollowSymlinks
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^ index.php [QSA,L]
+            RewriteRule ^ $WWW_INDEX [QSA,L]
         </IfModule>
     </Directory>
 </VirtualHost>

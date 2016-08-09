@@ -10,6 +10,8 @@ ADD files.tar /scripts
 ENV      SHENV_NAME=Apache \
         SHENV_COLOR=67 \
    HTTP_SERVER_NAME=docker-site.dev \
+            WWW_DIR=www \
+          WWW_INDEX=index \
       FIX_OWNERSHIP=1 \
       TZ=Europe/Paris
 
