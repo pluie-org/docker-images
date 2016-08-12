@@ -3,6 +3,7 @@
 - [index][1]
 - [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
     - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
+    - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
         - [pluie/alpine-symfony][6]       ( ~ 81 MB )
     - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
 - [docker tips][5]
@@ -31,6 +32,8 @@ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}
 172.22.0.4	pma.docker
 172.22.0.5	bo-payment.docker
 172.22.0.6	wordpress.docker
+172.22.0.7	symfony.docker
+172.22.0.8	afpm.docker
 # <
 
 ```
@@ -74,6 +77,7 @@ docker stats container
 [gogs.docker] (http://gogs.docker)  
 [bo-payment.docker] (http://bo-payment.docker)  
 [wordpress.docker] (http://wordpress.docker)  
+[symfony.docker] (http://symfony.docker)  
 
 #### Mysql
 ```
@@ -117,17 +121,6 @@ docker run --name apache --restart=always \
 -d pluie/alpine-apache
 ```
 
-### Symfony
-```
-cd /home/dev/docker
-docker run --name symfony --restart=always \
---net home0 -h symfony.docker --ip 172.22.0.7 --link=mysql:db \
--e HTTP_SERVER_NAME=symfony \
--e SYMFONY_VERSION=2.8 \
--v $(pwd)/repo/myapp:/app \
--d pluie/alpine-symfony
-```
-
 #### Wordpress
 ```
 cd /home/dev/docker
@@ -139,8 +132,32 @@ docker run --name wordpress --restart=always \
 -d pluie/alpine-apache
 ```
 
+### Symfony
+```
+cd /home/dev/docker
+docker run --name symfony --restart=always \
+--net home0 -h symfony.docker --ip 172.22.0.7 --link=mysql:db \
+-e HTTP_SERVER_NAME=symfony \
+-e SYMFONY_VERSION=2.8 \
+-v $(pwd)/repo/myapp:/app \
+-d pluie/alpine-symfony
+```
+
+#### ApacheFpm
+```
+cd /home/dev/docker
+
+docker run --name afpm --restart=always \
+--net home0 -h bo-payment.docker --ip 172.22.0.8 --link mysql:db \
+-v $(pwd)/repo/afpm:/app \
+-e HTTP_SERVER_NAME=afpm.docker \
+-d pluie/alpine-apache-fpm
+```
+
  [1]: https://github.com/pluie-org/docker-images
  [2]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine
  [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
  [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
+ [7]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-fpm
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
+ [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony

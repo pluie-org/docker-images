@@ -10,7 +10,10 @@ chown apache:apache /run/apache2
 tmpsed='s#^DocumentRoot ".*#DocumentRoot "/app/'$WWW_DIR'"#g'
 sed -i "$tmpsed" /etc/apache2/httpd.conf
 sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf
+sed -i 's#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so#\#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so#' /etc/apache2/httpd.conf
 sed -i 's#\#LoadModule rewrite_module modules/mod_rewrite.so#LoadModule rewrite_module modules/mod_rewrite.so#' /etc/apache2/httpd.conf
+sed -i 's#\#LoadModule mpm_event_module modules/mod_mpm_event.so#LoadModule mpm_event_module modules/mod_mpm_event.so#' /etc/apache2/httpd.conf
+sed -i 's#\#LoadModule slotmem_shm_module modules/mod_slotmem_shm.so#LoadModule slotmem_shm_module modules/mod_slotmem_shm.so#' /etc/apache2/httpd.conf
 sed -ir 's/expose_php = On/expose_php = Off/' /etc/php5/php.ini
 echo -e "\nIncludeOptional /app/vhost" >> /etc/apache2/httpd.conf
 unset tmpsed
