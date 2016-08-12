@@ -11,7 +11,7 @@ ENV      SHENV_NAME=Apache \
         SHENV_COLOR=67 \
    HTTP_SERVER_NAME=site.docker \
             WWW_DIR=www \
-          WWW_INDEX=index \
+          WWW_INDEX=index.php \
       FIX_OWNERSHIP=1 \
       TZ=Europe/Paris
 

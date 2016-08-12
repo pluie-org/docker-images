@@ -17,9 +17,15 @@ function a2setModule(){
     fi
 }
 
-ln -s /usr/lib/libxml2.so.2 /usr/lib/libxml2.so
-mkdir -p /app/$WWW_DIR 
-mkdir /run/apache2
+if [ ! -f /usr/lib/libxml2.so ]; then
+    ln -s /usr/lib/libxml2.so.2 /usr/lib/libxml2.so
+fi
+if [ ! -d /app/$WWW_DIR ]; then
+    mkdir -p /app/$WWW_DIR
+fi
+if [ ! -d /run/apache2 ]; then
+    mkdir /run/apache2
+fi
 chown -R 1000:apache /app/$WWW_DIR
 chmod -R 755 /scripts/pre-init.d
 mkdir -p /run/apache2

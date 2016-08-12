@@ -4,7 +4,7 @@
 - [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
     - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
     - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
-        - [pluie/alpine-symfony][6]       ( ~ 81 MB )
+        - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.0
     - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
 - [docker tips][5]
 
