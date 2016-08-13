@@ -81,8 +81,8 @@ $ docker exec -it apache "httpd -h"
 ```
  [1]: https://github.com/pluie-org/docker-images
  [2]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine
- [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
- [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
+ [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
+ [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
  [7]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-fpm
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
  [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony

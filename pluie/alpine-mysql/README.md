@@ -4,11 +4,11 @@
 - [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
     - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
     - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
-        - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.0
-    - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
+        - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.1
+    - [pluie/alpine-mysql][4]             ( ~172 MB ) MariaDb/10.1.14
 - [docker tips][5]
 
-Extend pluie/alpine with mysql (mariadb) 5.5.47  
+Extend pluie/alpine with mysql (MariaDb/10.1.14)
 Project comes with various scripts to execute basic tasks such as :  
 - dbcreate
 - dbdump
@@ -129,8 +129,8 @@ docker run --name mycontainer --link mysql:db ...
 
  [1]: https://github.com/pluie-org/docker-images
  [2]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine
- [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
- [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
+ [3]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache
+ [4]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-mysql
  [7]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-fpm
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
  [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony
