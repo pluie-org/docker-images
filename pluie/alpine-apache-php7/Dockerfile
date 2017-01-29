@@ -7,9 +7,9 @@ MAINTAINER a-Sansara https://github.com/a-sansara
 
 ADD files.tar /scripts
 
-ENV      SHENV_NAME=Apache \
+ENV      SHENV_NAME=Php7 \
         SHENV_COLOR=67 \
-   HTTP_SERVER_NAME=site.docker \
+   HTTP_SERVER_NAME=test.docker \
             WWW_DIR=www \
           WWW_INDEX=index.php \
       FIX_OWNERSHIP=1 \

@@ -5,6 +5,7 @@
     - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
     - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
         - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.1
+    - [pluie/alpine-apache-php7][8]       ( ~ 50 MB ) Apache/2.4.25 Php/7.0.15
     - [pluie/alpine-mysql][4]             ( ~172 MB ) MariaDb/10.1.14
 - [docker tips][5]
 
@@ -20,7 +21,7 @@ the symfony framework with $SYMFONY_VERSION version on the /app directory
 ## ENV variables
 
 ```
-  SYMFONY_VERSION=3.1             # symfony version
+  SYMFONY_VERSION=3.1               # symfony version
 ```
 
 ### Inherit ENV variables
@@ -46,11 +47,11 @@ the symfony framework with $SYMFONY_VERSION version on the /app directory
 
 chdir to your project directory
 ```
-$ docker run --name symfony -it --link=mysql:db1 -v $(pwd):/app pluie/alpine-symfony
+$ docker run --name symfony -it --link=mysql:db -v $(pwd):/app pluie/alpine-symfony
 ```
 or
 ```
-$ docker run --name symfony -d --link=mysql:db1 -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-symfony
+$ docker run --name symfony -d --link=mysql:db -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-symfony
 ```
 
 ## Connect to container
@@ -66,3 +67,4 @@ $ docker exec -it symfony bash
  [7]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-fpm
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
  [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony
+ [8]: https://github.com/pluie-org/docker-images/tree/master/pluie/7alpine-php

@@ -9,22 +9,22 @@
     - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
 - [docker tips][5]
 
-Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__
+Extend pluie/alpine with __apache 2.4.25__ and __php 7.0.15__
 
 - error log are attached to stdout
 - no need port redirection
-- you can use env var at container creation : __HTTP_SERVER_NAME__ (default : apache.docker ortherwise edit app/vhost later)
+- you can use env var at container creation : __HTTP_SERVER_NAME__ (default : site.docker ortherwise edit /app/vhost later)
 - you can still use ever your local http & sql server while your container(s) are running
 
 
 ## Image Size
 
-- image ~ 50 MB
+- image ~ 82 MB
 
 ## ENV variables
 
 ```
- HTTP_SERVER_NAME=apache.docker # apache ServerName  
+ HTTP_SERVER_NAME=site.docker   # apache ServerName  
           WWW_DIR=www           # DocumentRoot relative to volume  
         WWW_INDEX=index.php     # DirectoryIndex
     FIX_OWNERSHIP=1             # 
@@ -34,7 +34,7 @@ Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__
 
 ```
         SHENV_CTX=LOCAL         # LOCAL|INT|PROD change context bg color
-       SHENV_NAME=Apache        # container name 
+       SHENV_NAME=Php7          # container name 
       SHENV_COLOR=67            # ANSI EXTENDED COLOR CODE
                TZ=Europe/Paris  # TIMEZONE
 ```
@@ -63,25 +63,25 @@ by default it use the apache rewrite module to redirect all uri to entry point $
 
 chdir to your project directory
 ```
-$ docker run --name apache -it --link=mysql:db -v $(pwd):/app pluie/alpine-apache
+$ docker run --name php7 -it --link=mysql:db -v $(pwd):/app pluie/alpine-apache
 ```
 or
 ```
-$ docker run --name apache -it --link=mysql:db -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-apache
+$ docker run --name php7 -it --link=mysql:db -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-apache-php7
 ```
 
 
 ## Controling http server
 
 ```
-# reload
-$ docker exec -it apache "httpd -k graceful"
+# reload
+$ docker exec -it php7 "httpd -k graceful"
 # restart
-$ docker exec -it apache "httpd -k restart"
+$ docker exec -it php7 "httpd -k restart"
 ```
 for more commands :
 ```
-$ docker exec -it apache "httpd -h"
+$ docker exec -it php7 "httpd -h"
 ```
 
  [1]: https://github.com/pluie-org/docker-images
@@ -91,4 +91,4 @@ $ docker exec -it apache "httpd -h"
  [7]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-fpm
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
  [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony
- [8]: https://github.com/pluie-org/docker-images/tree/master/pluie/7alpine-php
+ [8]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-php7

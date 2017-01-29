@@ -5,6 +5,7 @@
     - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
     - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
         - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.1
+    - [pluie/alpine-apache-php7][8]       ( ~ 50 MB ) Apache/2.4.25 Php/7.0.15
     - [pluie/alpine-mysql][4]             ( ~172 MB ) MariaDb/10.1.14
 - [docker tips][5]
 
@@ -20,7 +21,7 @@ Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__ with FPM
 ## ENV variables
 
 ```
- HTTP_SERVER_NAME=apache.docker # apache ServerName  
+ HTTP_SERVER_NAME=fpm.docker    # apache ServerName  
           WWW_DIR=www           # DocumentRoot relative to volume  
         WWW_INDEX=index.php     # DirectoryIndex
     FIX_OWNERSHIP=1             # 
@@ -30,7 +31,7 @@ Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__ with FPM
 
 ```
         SHENV_CTX=LOCAL         # LOCAL|INT|PROD change context bg color
-       SHENV_NAME=Apache        # container name 
+       SHENV_NAME=ApacheFpm     # container name 
       SHENV_COLOR=67            # ANSI EXTENDED COLOR CODE
                TZ=Europe/Paris  # TIMEZONE
 ```
@@ -66,17 +67,20 @@ by default it use the apache rewrite module to redirect all uri to entry point $
 
 chdir to your project directory
 ```
-$ docker run --name afpm -it --link=mysql:db1 -v $(pwd):/app pluie/alpine-apache-fpm
+$ docker run --name afpm -it --link=mysql:db -v $(pwd):/app pluie/alpine-apache-fpm
 ```
 or
 ```
-$ docker run --name afpm -d --link=mysql:db1 -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-apache-fpm
+$ docker run --name afpm -d --link=mysql:db -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-apache-fpm
 ```
 
 
 ## Controling http server
 
 ```
+# reload
+$ docker exec -it afpm "httpd -k graceful"
+# restart
 $ docker exec -it afpm "httpd -k restart"
 ```
 for more commands :
@@ -91,3 +95,4 @@ $ docker exec -it afpm "httpd -h"
  [7]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-fpm
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
  [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony
+ [8]: https://github.com/pluie-org/docker-images/tree/master/pluie/7alpine-php

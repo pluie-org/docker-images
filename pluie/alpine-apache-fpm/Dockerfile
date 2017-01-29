@@ -13,7 +13,7 @@ ENV      SHENV_NAME=ApacheFpm \
             WWW_DIR=www \
           WWW_INDEX=index.php \
       FIX_OWNERSHIP=1 \
-      TZ=Europe/Paris
+                 TZ=Europe/Paris
 
 EXPOSE 80
 
