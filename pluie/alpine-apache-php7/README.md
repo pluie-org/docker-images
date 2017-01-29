@@ -19,7 +19,7 @@ Extend pluie/alpine with __apache 2.4.25__ and __php 7.0.15__
 
 ## Image Size
 
-- image ~ 82 MB
+- image ~ 50 MB
 
 ## ENV variables
 

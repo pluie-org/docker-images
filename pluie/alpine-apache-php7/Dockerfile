@@ -9,7 +9,7 @@ ADD files.tar /scripts
 
 ENV      SHENV_NAME=Php7 \
         SHENV_COLOR=67 \
-   HTTP_SERVER_NAME=test.docker \
+   HTTP_SERVER_NAME=php7.docker \
             WWW_DIR=www \
           WWW_INDEX=index.php \
       FIX_OWNERSHIP=1 \
