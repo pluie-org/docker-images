@@ -1,4 +1,4 @@
-# pluie/alpine-apache
+# pluie/alpine-apache-php7
 
 - [index][1]
 - [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
