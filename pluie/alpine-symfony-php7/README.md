@@ -10,80 +10,61 @@
     - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
 - [docker tips][5]
 
-Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__
-
-- error log are attached to stdout
-- no need port redirection
-- you can use env var at container creation : __HTTP_SERVER_NAME__ (default : apache.docker ortherwise edit app/vhost later)
-- you can still use ever your local http & sql server while your container(s) are running
-
+Extend pluie/alpine-apache-php7.
+  
+if __/app/$WWW_DIR__ does not exits then __pluie/alpine-symfony-php7__ install  
+the symfony framework with $SYMFONY_VERSION version on the /app directory
 
 ## Image Size
 
-- image ~ 50 MB
+- image ~ 82 MB
 
 ## ENV variables
 
 ```
- HTTP_SERVER_NAME=apache.docker # apache ServerName  
-          WWW_DIR=www           # DocumentRoot relative to volume  
-        WWW_INDEX=index.php     # DirectoryIndex
-    FIX_OWNERSHIP=1             # 
+  SYMFONY_VERSION=3.2               # symfony version
 ```
 
 ### Inherit ENV variables
 
 ```
-        SHENV_CTX=LOCAL         # LOCAL|INT|PROD change context bg color
-       SHENV_NAME=Apache        # container name 
-      SHENV_COLOR=67            # ANSI EXTENDED COLOR CODE
-               TZ=Europe/Paris  # TIMEZONE
+ HTTP_SERVER_NAME=symfony.docker    # apache ServerName  
+          WWW_DIR=web               # DocumentRoot relative to volume  
+        WWW_INDEX=app.php           # DirectoryIndex
+        SHENV_CTX=LOCAL             # LOCAL|INT|PROD change context bg color
+       SHENV_NAME=symfony           # container name 
+      SHENV_COLOR=33                # ANSI EXTENDED COLOR CODE
+    FIX_OWNERSHIP=1
+               TZ=Europe/Paris      # TIMEZONE
 ```
 
 ## Image Volumes
 
-__/app__ directory is a docker volume bind to your app project (silex/symfony etc)  
+- __/app__ directory is a docker volume bind to your symfony project
 
 __/app/$WWW_DIR__ is the documentRoot.  
-put only your entry point and static files to the documentRoot directory, no your app sources
-(__/app__ directory is design for this).
 
 __/app/vhost__ is your app vhost configuration file (with a serverName directive).
 by default it use the apache rewrite module to redirect all uri to entry point $WWW_INDEX 
-
-```
-/app/              # your application directory
-  |
-  |---- $WWW_DIR/  # documentRoot
-  |
-  |---- vhost     # apache app vhost
-```
 
 
 ## Image Usage
 
 chdir to your project directory
 ```
-$ docker run --name apache -it --link=mysql:db -v $(pwd):/app pluie/alpine-apache
+$ docker run --name symfony -it --link=mysql:db -v $(pwd):/app pluie/alpine-symfony-php7
 ```
 or
 ```
-$ docker run --name apache -it --link=mysql:db -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-apache
+$ docker run --name symfony -d --link=mysql:db -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-symfony-php7
 ```
 
+## Connect to container
 
-## Controling http server
+```
+$ docker exec -it symfony bash
+```
 
-```
-# reload
-$ docker exec -it apache "httpd -k graceful"
-# restart
-$ docker exec -it apache "httpd -k restart"
-```
-for more commands :
-```
-$ docker exec -it apache "httpd -h"
-```
 
  [1]: https://github.com/pluie-org/docker-images
  [2]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine

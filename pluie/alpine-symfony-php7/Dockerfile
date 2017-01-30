@@ -1,7 +1,7 @@
-# @app      pluie/alpine-symfony
+# @app      pluie/alpine-apache
 # @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
-FROM pluie/alpine-apache-fpm
+FROM pluie/alpine-apache-php7
 
 MAINTAINER a-Sansara https://github.com/a-sansara
 

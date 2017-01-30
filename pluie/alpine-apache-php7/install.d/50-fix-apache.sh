@@ -16,8 +16,8 @@ function a2setModule(){
         sed -i "s#${scom}LoadModule $2_module modules/mod_$2.so#${rcom}LoadModule $2_module modules/mod_$2.so#" "$path"
     fi
 }
-if [ ! -f /usr/lib/php ]; then
-    ln -s /usr/lib/php7 /usr/lib/php
+if [ ! -f /usr/bin/php ]; then
+    ln -s /usr/bin/php7 /usr/bin/php
 fi
 if [ ! -f /usr/lib/libxml2.so ]; then
     ln -s /usr/lib/libxml2.so.2 /usr/lib/libxml2.so

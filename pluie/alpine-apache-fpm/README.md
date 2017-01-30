@@ -6,7 +6,8 @@
     - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
         - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.1
     - [pluie/alpine-apache-php7][8]       ( ~ 50 MB ) Apache/2.4.25 Php/7.0.15
-    - [pluie/alpine-mysql][4]             ( ~172 MB ) MariaDb/10.1.14
+        - [pluie/alpine-symfony-php7][9]  ( ~ 82 MB ) Symfony2.8 or 3.2 Php/7.0.15
+    - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
 - [docker tips][5]
 
 Extend pluie/alpine with __apache 2.4.23__ and __php 5.6.24__ with FPM
@@ -95,4 +96,5 @@ $ docker exec -it afpm "httpd -h"
  [7]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-fpm
  [5]: https://github.com/pluie-org/docker-images/blob/master/DOCKER.md
  [6]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony
- [8]: https://github.com/pluie-org/docker-images/tree/master/pluie/7alpine-php
+ [8]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-apache-php7
+ [9]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony-php7
