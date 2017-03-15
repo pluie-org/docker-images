@@ -6,7 +6,7 @@ if [ ! -z "/app/vhost" ]; then
     cat <<EOF > "/app/vhost"
 <VirtualHost *:80>
     ServerName $HTTP_SERVER_NAME
-    SetEnvIfNoCase ^Authorization$ "(.+)" HTTP_AUTHORIZATION=$1
+    SetEnvIfNoCase ^Authorization$ "(.+)" HTTP_AUTHORIZATION=\$1
     <Directory /app/$WWW_DIR>
         AllowOverride None
         Require all granted

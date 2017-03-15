@@ -20,19 +20,12 @@ function a2setModule(){
 if [ ! -f /usr/lib/libxml2.so ]; then
     ln -s /usr/lib/libxml2.so.2 /usr/lib/libxml2.so
 fi
-if [ ! -d /app/$WWW_DIR ]; then
-    mkdir -p /app/$WWW_DIR
-fi
 if [ ! -d /run/apache2 ]; then
     mkdir /run/apache2
 fi
-chown -R 1000:apache /app/$WWW_DIR
 chmod -R 755 /scripts/pre-init.d
 mkdir -p /run/apache2
 chown apache:apache /run/apache2
-tmpsed='s#^DocumentRoot ".*#DocumentRoot "/app/'$WWW_DIR'"#g'
-sed -i "$tmpsed" /etc/apache2/httpd.conf
-sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf
 initTitle "Apache" "Loading Modules"
 a2setModule 1 "rewrite"
 a2setModule 1 "mpm_event"

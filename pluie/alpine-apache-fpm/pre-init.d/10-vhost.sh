@@ -6,7 +6,7 @@ if [ ! -z "/app/vhost" ]; then
     cat <<EOF > "/app/vhost"
 <VirtualHost *:80>
     ServerName $HTTP_SERVER_NAME
-    SetEnvIfNoCase ^Authorization$ "(.+)" HTTP_AUTHORIZATION=$1
+    SetEnvIfNoCase ^Authorization$ "(.+)" HTTP_AUTHORIZATION=\$1
     <FilesMatch \.php$>
         SetHandler proxy:fcgi://127.0.0.1:9000
     </FilesMatch>
