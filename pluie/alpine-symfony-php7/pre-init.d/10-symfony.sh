@@ -2,12 +2,14 @@
 # @app      pluie/alpine-symfony
 # @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
-if [ -z "$CREATE_WWW_DIR" ]; then
+if [ ! -z "$CREATE_WWW_DIR" ]; then
     cd /tmp
-    mkdir $WWW_DIR
     symfony new app $SYMFONY_VERSION
-    mv app/* /app/
+    rm -rf /app/web
+    mv -f app/* /app/
     chown -R 1000:apache /app/
     chown -R 1000:apache /app/var
     chmod -R g+w /app
+    CTN_IP=$(ip route | cut -d ' ' -f3 | head -n1)
+    sed -i "/::1/s//::1', '$CTN_IP/" /app/web/app_dev.php
 fi
