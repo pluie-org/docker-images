@@ -16,7 +16,7 @@ This Image provide a Linux Alpine distribution with :
 - curl
 - nano as editor
 
-Base image : [alpine:3.4] (https://hub.docker.com/_/alpine/)
+Base image : [alpine:3.5](https://hub.docker.com/_/alpine/)
 
 This project come with a structure to facilitate further images (like pluie/alpine-apache & pluie/alpine-mysql)
 
