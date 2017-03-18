@@ -5,13 +5,13 @@ various based images for Docker
 ## Available Images
 
 - [index][1]
-- [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
-    - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
-    - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
-        - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.1
-    - [pluie/alpine-apache-php7][8]       ( ~ 50 MB ) Apache/2.4.25 Php/7.0.15
-        - [pluie/alpine-symfony-php7][9]  ( ~ 82 MB ) Symfony2.8 or 3.2 Php/7.0.15
-    - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
+- [pluie/alpine][2]                       ( ~  9 MB ) Alpine/3.5
+    - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.25 Php/5.6.30
+    - [pluie/alpine-apache-fpm][7]        ( ~ 51 MB ) Apache/2.4.25 Php/5.6.30 Fpm
+        - [pluie/alpine-symfony][6]       ( ~ 83 MB ) Symfony2.8 or 3.2
+    - [pluie/alpine-apache-php7][8]       ( ~ 45 MB ) Apache/2.4.25 Php/7.0.16
+        - [pluie/alpine-symfony-php7][9]  ( ~ 77 MB ) Symfony2.8 or 3.2 Php/7.0.16
+    - [pluie/alpine-mysql][4]             ( ~181 MB ) Mysql/5.6 ( MariaDB )
 - [docker tips][5]
 
 ## Base Image Structure

@@ -1,13 +1,13 @@
 ## Docker
 
 - [index][1]
-- [pluie/alpine][2]                       ( < 10 MB ) Alpine/3.4
-    - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24
-    - [pluie/alpine-apache-fpm][7]        ( ~ 50 MB ) Apache/2.4.23 Php/5.6.24 Fpm
-        - [pluie/alpine-symfony][6]       ( ~ 82 MB ) Symfony2.8 or 3.1
-    - [pluie/alpine-apache-php7][8]       ( ~ 50 MB ) Apache/2.4.25 Php/7.0.15
-        - [pluie/alpine-symfony-php7][9]  ( ~ 82 MB ) Symfony2.8 or 3.2 Php/7.0.15
-    - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
+- [pluie/alpine][2]                       ( ~  9 MB ) Alpine/3.5
+    - [pluie/alpine-apache][3]            ( ~ 50 MB ) Apache/2.4.25 Php/5.6.30
+    - [pluie/alpine-apache-fpm][7]        ( ~ 51 MB ) Apache/2.4.25 Php/5.6.30 Fpm
+        - [pluie/alpine-symfony][6]       ( ~ 83 MB ) Symfony2.8 or 3.2
+    - [pluie/alpine-apache-php7][8]       ( ~ 45 MB ) Apache/2.4.25 Php/7.0.16
+        - [pluie/alpine-symfony-php7][9]  ( ~ 77 MB ) Symfony2.8 or 3.2 Php/7.0.16
+    - [pluie/alpine-mysql][4]             ( ~181 MB ) Mysql/5.6 ( MariaDB )
 - [docker tips][5]
 
 ### Networking
@@ -36,6 +36,7 @@ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}
 172.22.0.6	wordpress.docker
 172.22.0.7	fpm.docker
 172.22.0.8	symfony.docker
+172.22.0.9	php7.docker
 # <
 
 ```
@@ -74,13 +75,13 @@ docker stats container
 
 #### map
 
-[db.docker] (http://db.docker)  
-[pma.docker] (http://pma.docker)  
-[gogs.docker] (http://gogs.docker)  
-[bo-payment.docker] (http://bo-payment.docker)  
-[wordpress.docker] (http://wordpress.docker)  
-[fpm.docker] (http://symfony.docker)  
-[symfony.docker] (http://symfony.docker)  
+[db.docker](http://db.docker)  
+[pma.docker](http://pma.docker)  
+[gogs.docker](http://gogs.docker)  
+[bo-payment.docker](http://bo-payment.docker)  
+[wordpress.docker](http://wordpress.docker)  
+[fpm.docker](http://symfony.docker)  
+[symfony.docker](http://symfony.docker)  
 
 #### Mysql
 ```
@@ -124,6 +125,18 @@ docker run --name apache --restart=always \
 -d pluie/alpine-apache
 ```
 
+#### Apache Php7
+```
+cd /home/dev/docker
+
+docker run --name php7 --restart=always \
+--net home0 -h bo-payment.docker --ip 172.22.0.9 --link mysql:db \
+-v $(pwd)/repo/pws-server:/app \
+-e HTTP_SERVER_NAME=bo-payment.docker \
+-e WWW_DIR=web \
+-d pluie/alpine-apache-php7
+```
+
 #### Wordpress
 ```
 cd /home/dev/docker
@@ -155,6 +168,17 @@ docker run --name symfony --restart=always \
 -e SYMFONY_VERSION=2.8 \
 -v $(pwd)/repo/myapp:/app \
 -d pluie/alpine-symfony
+```
+
+### Symfony Php7
+```
+cd /home/dev/docker
+docker run --name symfony --restart=always \
+--net home0 -h symfony.docker --ip 172.22.0.8 --link=mysql:db \
+-e HTTP_SERVER_NAME=symfony \
+-e SYMFONY_VERSION=3.2 \
+-v $(pwd)/repo/myapp:/app \
+-d pluie/alpine-symfony-php7
 ```
 
  [1]: https://github.com/pluie-org/docker-images

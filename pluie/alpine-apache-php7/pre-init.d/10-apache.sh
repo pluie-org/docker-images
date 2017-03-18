@@ -3,6 +3,7 @@
 # @author   a-Sansara https://git.pluie.org/pluie/docker-images
 
 if [ ! -d /app/$WWW_DIR ]; then
+    echo create dir mode
     CREATE_WWW_DIR=1
     mkdir -p /app/$WWW_DIR
 fi

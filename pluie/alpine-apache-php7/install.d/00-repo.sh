@@ -9,7 +9,7 @@
 #~ http://alpine.gliderlabs.com/alpine/edge/main
 #~ http://alpine.gliderlabs.com/alpine/edge/testing
 #~ " >> /etc/apk/repositories
-echo "http://dl-5.alpinelinux.org/alpine/edge/community
-http://dl-5.alpinelinux.org/alpine/edge/main
-http://dl-5.alpinelinux.org/alpine/edge/testing
-" > /etc/apk/repositories
+#~ echo "http://dl-5.alpinelinux.org/alpine/edge/community
+#~ http://dl-5.alpinelinux.org/alpine/edge/main
+#~ http://dl-5.alpinelinux.org/alpine/edge/testing
+#~ " > /etc/apk/repositories
