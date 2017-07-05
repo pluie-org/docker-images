@@ -39,6 +39,7 @@ echo
 tmpsed="/etc/php5/php.ini"
 sed -ir 's/expose_php = On/expose_php = Off/' $tmpsed
 sed -i "s|;*date.timezone =.*|date.timezone = ${TZ}|i" $tmpsed
+cat $tmpsed | grep "date.timezone"
 sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" $tmpsed
 tmpsed="/etc/php5/php-fpm.conf"
 sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" $tmpsed
