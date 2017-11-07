@@ -14,7 +14,7 @@ https://github.com/pluie-org/libpluie-echo
 
 ## samples
 
-![Sample 1 code](https://www.meta-tech.academy/img/libpluie-echo_sample_code1.png)
+![Sample 1 code](https://www.meta-tech.academy/img/libpluie-echo_sample_code1.png?tmp=1)
 ![Sample 1 output](https://www.meta-tech.academy/img/libpluie-echo_sample1.png)
-![Sample 2 code](https://www.meta-tech.academy/img/libpluie-echo_sample_code2.png)
+![Sample 2 code](https://www.meta-tech.academy/img/libpluie-echo_sample_code2.png?tmp=1)
 ![Sample 2 output](https://www.meta-tech.academy/img/libpluie-echo_sample2.png)
