@@ -7,4 +7,4 @@ apk add git vala gcc musl-dev python3 ninja \
 && git clone https://github.com/pluie-org/libpluie-echo.git \
 && cd libpluie-echo/ \
 && meson --prefix=/usr ./ build \
-&& ninja install -C build \
+&& ninja install -C build 

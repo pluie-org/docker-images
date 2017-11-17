@@ -4,5 +4,5 @@
 
 . /scripts/common.sh
 
-initTitle "Vala shared lib pluie-echo-0.1" "Sample"
-/libpluie-echo/echo
+initTitle "Vala shared lib pluie-echo-0.2" "Sample"
+/libpluie-echo/samples/pluie-outputFormatter
