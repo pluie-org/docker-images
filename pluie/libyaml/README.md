@@ -1,4 +1,4 @@
-# pluie/alpine-symfony
+# pluie/libyaml
 
 - [index][1]
 - [pluie/alpine][2]                       ( ~  9 MB ) Alpine/3.5
@@ -12,62 +12,41 @@
         - [pluie/libyaml][11]                 ( ~299 MB ) Vala 0.34.2 pluie-yaml-0.4
 - [docker tips][5]
 
-Extend pluie/alpine-apache-fpm.
-  
-if __/app/$WWW_DIR__ does not exits then __pluie/alpine-symfony__ install  
-the symfony framework with `$SYMFONY_VERSION` version on the `/app` directory
 
-## Image Size
+demo image demonstrating pluie-yaml, a shared vala library managing yaml files (v 1.2) and yaml nodes in vala language.
+As json is now a valid subset of yaml, you can use this lib to load json files too
 
-- image ~ 83 MB
-
-## ENV variables
+you can run a container with :
 
 ```
-  SYMFONY_VERSION=3.1               # symfony version
+docker run --rm -it pluie/libyaml
 ```
 
-### Inherit ENV variables
+then execute any samples :
 
-```
- HTTP_SERVER_NAME=symfony.docker    # apache ServerName  
-          WWW_DIR=web               # DocumentRoot relative to volume  
-        WWW_INDEX=app.php           # DirectoryIndex
-        SHENV_CTX=LOCAL             # LOCAL|INT|PROD change context bg color
-       SHENV_NAME=symfony           # container name 
-      SHENV_COLOR=33                # ANSI EXTENDED COLOR CODE
-    FIX_OWNERSHIP=1
-               TZ=Europe/Paris      # TIMEZONE
-```
+./yaml-loader
+./json-loader
+./yaml-config
+./yaml-traversing
+./yaml-finder
+./yaml-imports
+./yaml-node
 
-## Image Volumes
+## repository
 
-- __/app__ directory is a docker volume bind to your symfony project
-- __/etc/php5/fpm.d/__ to customize fpm 
+https://github.com/pluie-org/lib-yaml
 
+## samples
 
-## Image Usage
+./yaml-config source code
 
-chdir to your project directory
-```
-$ docker run --name symfony -it --link=mysql:db -v $(pwd):/app pluie/alpine-symfony
-```
-or
-```
-$ docker run --name symfony -d --link=mysql:db -e HTTP_SERVER_NAME=yourServerName -v $(pwd):/app pluie/alpine-symfony
-```
+![Sample yaml-config code](https://www.meta-tech.academy/img/lib-yaml-config-code.png?tmp=1)
 
-## Connect to container
+./yaml-config output
 
-```
-$ docker exec -it symfony bash
-```
+![Sample yaml-config output1](https://www.meta-tech.academy/img/lib-yaml-docker-config1.png?tmp=1)
+![Sample yaml-config output2](https://www.meta-tech.academy/img/lib-yaml-docker-config2.png?tmp=1)
 
-## Run the console
-
-```
-$ docker exec -it symfony php /app/bin/console --ansi
-```
 
  [1]: https://github.com/pluie-org/docker-images
  [2]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine
