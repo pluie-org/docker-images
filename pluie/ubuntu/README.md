@@ -1,4 +1,4 @@
-# pluie/alpine
+# pluie/ubuntu
 
 - [index][1]
 - [pluie/alpine][2]                       ( ~  9 MB ) Alpine/3.5
@@ -9,15 +9,11 @@
         - [pluie/alpine-symfony-php7][9]  ( ~ 77 MB ) Symfony2.8 or 3.2 Php/7.0.16
     - [pluie/alpine-mysql][4]             ( ~181 MB ) Mysql/5.6 ( MariaDB )
     - [pluie/libecho][10]                 ( ~288 MB ) Vala 0.34.2 pluie-echo-0.2
-- [pluie/ubuntu][12]                      ( ~  9 MB ) Ubuntu 18.04
-    - [pluie/libyaml][11]                 ( ~535 MB ) Vala 0.36.2 pluie-yaml-0.4
+- [pluie/ubuntu][12]                      ( ~141 MB ) Ubuntu 18.04
+    - [pluie/libyaml][11]                 ( ~538 MB ) Vala 0.40.4 pluie-yaml-0.4
 - [docker tips][5]
 
-This Image provide a Linux Ubuntu LTS distribution with :
-- fully functionnal & colorized terminal
-- bash
-- curl
-- nano as editor
+This Image provide a Linux Ubuntu LTS distribution base image.
 
 Base image : [ubuntu](https://hub.docker.com/_/ubuntu/)
 
@@ -25,7 +21,7 @@ This project come with a structure to facilitate further images (like pluie/liby
 
 ## Image Size
 
-- very small image ~ 9 MB
+- 141 MB
 
 
 ## Image Usage

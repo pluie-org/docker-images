@@ -9,7 +9,8 @@
         - [pluie/alpine-symfony-php7][9]  ( ~ 82 MB ) Symfony2.8 or 3.2 Php/7.0.15
     - [pluie/alpine-mysql][4]             ( ~172 MB ) Mysql/5.5.47 ( MariaDB )
     - [pluie/libecho][10]                 ( ~288 MB ) Vala 0.34.2 pluie-echo-0.2
-        - [pluie/libyaml][11]                 ( ~299 MB ) Vala 0.34.2 pluie-yaml-0.4
+- [pluie/ubuntu][12]                      ( ~141 MB ) Ubuntu 18.04
+    - [pluie/libyaml][11]                 ( ~538 MB ) Vala 0.40.4 pluie-yaml-0.4
 - [docker tips][5]
 
 Extend pluie/alpine with __apache 2.4.25__ and __php 7.0.15__
@@ -98,3 +99,4 @@ $ docker exec -it php7 "httpd -h"
  [9]: https://github.com/pluie-org/docker-images/tree/master/pluie/alpine-symfony-php7
  [10]: https://github.com/pluie-org/docker-images/tree/master/pluie/libecho
  [11]: https://github.com/pluie-org/docker-images/tree/master/pluie/libyaml
+ [12]: https://github.com/pluie-org/docker-images/tree/master/pluie/ubuntu
