@@ -1,0 +1,22 @@
+#!/bin/bash
+# @app      pluie/alpine-apache
+# @author   a-Sansara https://git.pluie.org/pluie/docker-images
+
+   Ctitle="\033[1;38;5;15;1;48;5;30m"
+    Citem="\033[1;38;5;36m"
+     Coff="\033[m"
+  DOCKDIR=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
+DOCKBUILD=$(basename $DOCKDIR)
+ DOCKREPO=$(basename $(dirname $DOCKDIR))
+  DOCKTAG=${1:-"latest"}
+   TMPPWD=$(pwd)
+   indent="    "
+cd $DOCKDIR
+echo -e "\n  ${Ctitle} Preparing files : ${Coff}${Citem}\n"
+
+tar -cvf files.tar *.sh pre-init.d/ install.d/ | sed "s/^/${indent}↠ /"
+
+echo -e "\n  ${Ctitle} Proceed Dockerfile build : ${Coff}\n
+"
+sudo docker build --force-rm -t ${DOCKREPO}/${DOCKBUILD}:${DOCKTAG} . | sed "s/^/${indent}/"
+cd $TMPPWD
